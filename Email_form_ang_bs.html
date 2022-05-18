@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+	<script type="text/javascript" src="angular.js"></script>
+	<link rel="stylesheet" type="text/css" href="style.css">
+
+	<title>Postaláda</title>
+
+</head>
+<body ng-app="app" class="text-center" style="max-width:1200px; margin:auto">
+	
+	<div ng-controller="C1">
+
+		<section ng-click="uj_level_add()" class="kor container-fluid d-flex justify-content-center bg-info text-center my-4 " >
+		+ </section>
+		
+<hr>
+
+<div ng-repeat="uj in ujlevelek" class="col-md-6 container-fluid text-center p-3 bg-secondary mb-10 szappan ">
+	<form class="text-center p-3">
+			<p class="ctt" >Címzett:</p>
+			<select  ng-model=uj.cimzett ng-options="i for i in cimzettek" class="form-control text-center p-2">
+			</select>
+			<br>
+			<div class="text-white" ng-bind="uj.cimzett"></div>
+			<br>
+			<p class="ctt" >Tárgy:</p>
+			<input ng-model="uj.targy" class="form-control text-center p-2 ">
+			<br>
+			<p class="ctt" >Tartalom:</p>
+			<textarea ng-model="uj.level" class="form-control text-center p-2" style="height:150px"></textarea>
+			<br>
+			<button ng-click="add(uj.cimzett, uj.targy, uj.level)" class="btn btn-md btn-info">OK</button>
+			<br>
+
+
+		<aside ng-repeat="s in sent" class="col-md-12 my-4 flex-wrap text-center p-3 " >
+			<div class="d-flex flex-row m-2 alahuz"><p class="ctt">Címzett &#8594;  </p > <p class="text-white"> {{s.cimzett}} </p></div>
+			<br>
+			<div class="d-flex flex-row m-2 alahuz"><p class="ctt">Tárgy &#8594;  </p> <p class="text-white"> {{s.targy}} </p></div>
+			<br>
+			<p class="flex-row flex-wrap text-white"> {{s.level}} </p>
+		</aside>
+
+	</form>
+
+</div>
+</div>
+
+	
+	<a href="#" ng-controller="C2" class="container-fluid mb-6 nav-link text-info"> {{emailek}} </a>
+	<br>
+
+</body>
+<script type="text/javascript" src="angedit.js"></script>
+</html>
